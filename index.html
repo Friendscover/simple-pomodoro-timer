@@ -6,13 +6,15 @@
 <body>
     <div class="container">
         <div class="pomodoro">
-            <label for="timer" id="timerlabel">Timer: </label>
-            <input type="number" id="timer" min="5" max="30" placeholder="25">
+            <label for="timer" id="timerlabel">Timer: 25</label>
+            <input type="number" id="timer" min="5" max="30" placeholder="25" value="25">
+            <label for="break" id="breaklabel">Break Time: 5</label>
+            <input type="number" id="breaktime" min="5" placeholder="5" value="5">
+        </div>
+        <div class="buttons">
             <input type="button" id="btnstart" value="start">
             <input type="button" id="btnreset" value="reset">
             <input type="button" id="btnstop" value="stop">
-            <label for="break" id="breaklabel">Break Time: </label>
-            <input type="number" id="breaktime" min="5" placeholder="5">
         </div>
     </div>
 </body>

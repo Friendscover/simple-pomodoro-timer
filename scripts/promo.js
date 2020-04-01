@@ -8,7 +8,7 @@ function startTimer()
 function resetTimer()
 {
     timerValue = resetMinutes();
-    document.getElementById("timerlabel").innerHTML = timerValue; 
+    document.getElementById("timerlabel").innerHTML = "Timer: " + timerValue; 
 }
 
 function resetBreakTimer()
@@ -90,6 +90,8 @@ function updateBreakTimer()
     if(breakseconds <= 0 && breakminutes <= 0)
     {
         stopTimer(breakTimer);
+        alert("Break is over!");
+        startTimer();
     }
     else if(breakseconds <= 0)
     {

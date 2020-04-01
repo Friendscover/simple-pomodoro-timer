@@ -1,0 +1,55 @@
+body {
+    background: #6CB0A8;
+}
+
+.container {
+    border: #F6F8FA solid;
+    border-radius: 7px;
+    max-width: 800px;
+    margin: auto;
+    margin-top: 90px;
+}
+
+
+.pomodoro, .buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: auto;
+    background-color: #F6F8FA;
+}
+
+.buttons {
+    color: #CD594B;
+    size: 10px;
+}
+
+.pomodoro label {
+    margin-right: 10px;
+    margin-left: 10px;
+    color: #23585A;
+    font-size: 20px;
+}
+
+#btnstart, #btnreset, #btnstop {
+    margin: 10px;
+    background-color: #CD594B;
+    width: 180px;
+    height: 40px;
+    color: #F6F8FA;
+    font-size: 18px;
+}
+
+#timer, #breaktime {
+    font-size: 19px;
+    background-color: #F6F8FA;
+    color: #23585A;
+    text-align: center;
+    width: 100px;
+    border: 1px #23585A solid;
+}
+
+#timer, #timerlabel, #breaktime, #breaklabel {
+    margin-top: 10px;
+}
