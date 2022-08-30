@@ -2,6 +2,8 @@ function startTimer()
 {   
     minutes = resetMinutes(); 
     seconds = 0;
+    // this clear the interval timer for each new sessions
+    clearInterval(timerUpdate)
     timerUpdate = setInterval(updateTimer, 1000);
 }
 
@@ -56,7 +58,6 @@ let breakseconds = 0;
 let breakminutes = document.getElementById("breaktime").value;
 
 //timer update
-
 let timerUpdate = setInterval(updateTimer, 1000);
 let breakTimer = setInterval(updateBreakTimer, 1000);
 clearInterval(timerUpdate);
