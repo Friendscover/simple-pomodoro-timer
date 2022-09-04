@@ -1,35 +1,52 @@
+//initializing variables
+let seconds = 0
+let minutes = getTimerMinutes("timer");
+let breakseconds = 0;
+let breakminutes = getTimerMinutes("breaktime");
+
+//timer update 
+//TODO: check if these are necessary
+let timerUpdate = null;
+let breakUpdate = null;
+
+function getTimerMinutes(timerLabel)
+{
+    let minutes = document.getElementById(timerLabel).value;
+    return minutes;
+}
+
+function resetSeconds()
+{
+    return 0;
+}
+
 function startTimer()
 {   
-    minutes = resetMinutes(); 
-    seconds = 0;
+    seconds = resetSeconds();
+    minutes = getTimerMinutes("timer"); 
     // this clear the interval timer for each new sessions
-    clearInterval(timerUpdate)
+    //TODO: update 
+    stopTimer(timerUpdate)
     timerUpdate = setInterval(updateTimer, 1000);
 }
 
 function resetTimer()
 {
-    timerValue = resetMinutes();
+    timerValue = getTimerMinutes("timer");
     document.getElementById("timerlabel").innerHTML = "Timer: " + timerValue; 
+}
+
+function stopTimer(timervar)
+{
+    clearInterval(timervar);
 }
 
 function resetBreakTimer()
 {
-    breakseconds = 0;
+    breakseconds = resetSeconds();
     document.getElementById("breaklabel").innerHTML = "Break Time: " + document.getElementById("breaktime").value;
 }
 
-function resetSeconds()
-{
-    seconds = 0;
-    return seconds;
-}
-
-function resetMinutes()
-{
-    let minutes = document.getElementById("timer").value;
-    return minutes;
-}
 
 //button event listener
 const startButton = document.getElementById("btnstart");
@@ -48,30 +65,19 @@ stopButton.addEventListener("click", () => {
     resetTimer()
     resetBreakTimer()
     stopTimer(timerUpdate)
-    stopTimer(breakTimer)
+    stopTimer(breakUpdate)
 });
 
-//global variabels are bad
-let seconds = 0
-let minutes = resetMinutes();
-let breakseconds = 0;
-let breakminutes = document.getElementById("breaktime").value;
-
-//timer update
-let timerUpdate = setInterval(updateTimer, 1000);
-let breakTimer = setInterval(updateBreakTimer, 1000);
-clearInterval(timerUpdate);
-clearInterval(breakTimer);
-
+//main update functions
 function updateTimer()
 {
     if(seconds <= 0 && minutes <= 0)
     {
         alert("Times up");
-        minutes = resetMinutes();
+        minutes = getTimerMinutes("timer");
         stopTimer(timerUpdate);
         breakminutes = document.getElementById("breaktime").value;
-        breakTimer = setInterval(updateBreakTimer, 1000);
+        breakUpdate = setInterval(updateBreakTimer, 1000);
     }
     else if(seconds <= 0)
     {
@@ -90,7 +96,7 @@ function updateBreakTimer()
 {
     if(breakseconds <= 0 && breakminutes <= 0)
     {
-        stopTimer(breakTimer);
+        stopTimer(breakUpdate);
         alert("Break is over!");
         startTimer();
     }
@@ -106,9 +112,3 @@ function updateBreakTimer()
 
     document.getElementById("breaklabel").innerText = "Break Time " + breakminutes.toString() + ":" + breakseconds.toString();
 }
-
-function stopTimer(timervar)
-{
-    clearInterval(timervar);
-}
-
