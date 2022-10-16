@@ -5,9 +5,11 @@ let breakseconds = 0;
 let breakminutes = getTimerMinutes("breaktime");
 
 //timer update 
-//TODO: check if these are necessary
 let timerUpdate = null;
 let breakUpdate = null;
+
+//get audio element DOM
+const audioElement = document.querySelector("audio");
 
 function getTimerMinutes(timerLabel)
 {
@@ -47,6 +49,10 @@ function resetBreakTimer()
     document.getElementById("breaklabel").innerHTML = "Break Time: " + document.getElementById("breaktime").value;
 }
 
+function playDoorBell()
+{
+    audioElement.play();
+}
 
 //button event listener
 const startButton = document.getElementById("btnstart");
@@ -73,7 +79,7 @@ function updateTimer()
 {
     if(seconds <= 0 && minutes <= 0)
     {
-        alert("Times up");
+        playDoorBell();
         minutes = getTimerMinutes("timer");
         stopTimer(timerUpdate);
         breakminutes = document.getElementById("breaktime").value;
@@ -96,8 +102,8 @@ function updateBreakTimer()
 {
     if(breakseconds <= 0 && breakminutes <= 0)
     {
+        playDoorBell();
         stopTimer(breakUpdate);
-        alert("Break is over!");
         startTimer();
     }
     else if(breakseconds <= 0)
